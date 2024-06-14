@@ -1,0 +1,32 @@
+<div class="w-full h-screen">
+    <div class="grid md:grid-cols-2 md:h-[100vh] h-full">
+        <div class="hidden md:block w-full h-full md:relative">
+            <img src="https://castelanauditores.com/images/Blog/blog-50.webp" alt="" class="w-full h-[100vh] object-cover">
+            <div class="absolute inset-0 backdrop-filter-blur-md bg-gradient-to-r from-black to-transparent flex justify-center items-center">
+                <span class="text-white text-5xl font-bold ">
+                   - ¡Mantengamonos <br>en contacto! -
+                </span>
+            </div>
+        </div>
+        <div class="w-full h-full bg-[#003A70] flex justify-center items-center md:p-0 p-4">
+            <div class="md:p-4 bg-gray-900 rounded-lg md:w-[40vw] p-4">
+                <div class="flex items-center justify-between p-6">
+                    <hr class="flex-1 bg-white">
+                    <span class="text-lg font-bold text-white px-2 py-2">Contacta con nosotros</span>
+                    <hr class="flex-1 bg-white">
+                </div>                
+                <!-- Formulario -->
+                <form #contactForm="ngForm" (submit)="sendEmail(contactForm)">
+                    <div >
+                        <input type="text" name="nombre" placeholder="Nombre(s)" class=" placeholder-gray-600 bg-slate-200/80 focus:bg-slate-100 duration-200 text-black mb-5 rounded-lg border-b-2 outline-0 border-[#003A70] w-full py-2 px-2">
+                        <input type="text" name="email" placeholder="Correo Electronico" class=" placeholder-gray-600 bg-slate-200/70 focus:bg-slate-100 duration-200 text-black mb-5 rounded-lg border-b-2 outline-0 border-[#003A70] w-full py-2 px-2">
+                        <textarea name="mensaje" placeholder="Escribe tu mensaje" class=" placeholder-gray-600 bg-slate-200/70 focus:bg-slate-100 duration-200 text-black mb-5 rounded-lg border-b-2 outline-0 border-[#003A70] w-full  py-2 px-2" id="" cols="30" rows="10"></textarea>
+                        <button class="bg-transparent w-full rounded-lg p-2 text-white font-bold hover:bg-blue-600 duration-200">
+                            Enviar Mensaje
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

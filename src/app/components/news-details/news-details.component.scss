@@ -1,0 +1,14 @@
+.overflow-hidden-with-shadow {
+    position: relative;
+    overflow: hidden;
+}
+
+.overflow-hidden-with-shadow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px; /* Altura del sombreado, ajusta según sea necesario */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+}

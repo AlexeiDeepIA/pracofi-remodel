@@ -1,0 +1,146 @@
+
+
+
+<!-- Agregar un usuario nuevo -->
+<div class="p-4 sm:ml-64">
+    <div class="bg-gray-800 p-6 rounded-lg">
+        <span class="text-white font-bold text-lg"> 
+            Agregar Noticia
+        </span>   
+        <form #newsForm="ngForm" (submit)="addNews(newsForm)">
+            <div class="grid grid-cols-2 gap-3">            
+                <div class="flex flex-col md:pt-4">
+                    <span class="text-white font-bold mb-2"> Titulo </span>
+                    <input name="titulo" type="text" placeholder="Titulo de la noticia" class="placeholder-gray-600 md:p-2 rounded-lg" ngModel>
+                </div>
+                <div class="flex flex-col md:pt-4">
+                    <span class="text-white font-bold mb-2"> Subtitulo </span>
+                    <input name="subtittle" type="text" placeholder="Subtitulo" class="placeholder-gray-600 md:p-2 rounded-lg"  ngModel>
+                </div>                
+                <div class="flex flex-col md:pt-4">
+                    <span class="text-white font-bold mb-2"> URL de la Imagen </span>
+                    <input name="image" type="text" placeholder="Link de imagen" class="placeholder-gray-600 md:p-2 rounded-lg"  ngModel>
+                </div>    
+                <div class="flex flex-col">
+                    <span class="text-white font-bold mb-2"> Texto 1 </span>
+                    <textarea name="content1" type="email" placeholder="Contenido del primer parrafo" class="placeholder-gray-600 md:p-2 rounded-lg"  ngModel rows="10"></textarea>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-bold mb-2"> Texto 2 </span>
+                    <textarea name="content2" type="text" placeholder="Contenido del segundo parrafo" class="placeholder-gray-600 md:p-2 rounded-lg" ngModel rows="10"></textarea>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-bold mb-2"> Texto 3 </span>
+                    <textarea name="content3" type="text" placeholder="Contenido del tercer parrafo" class="placeholder-gray-600 md:p-2 rounded-lg" ngModel rows="10"></textarea>
+                </div>
+                <div>
+
+                </div>
+                <div class="flex justify-end">                    
+                    <button type="submit" class="w-40 hover:bg-[#003A70] text-white p-2 rounded-lg duration-200 font-bold">
+                        Agregar
+                    </button>
+                </div>                
+            </div>
+        </form>             
+    </div>
+</div>
+
+<!-- Se mostrara para editar el usuario -->
+<div *ngIf="selectedNew" class="p-4 sm:ml-64">
+    <div class="bg-gray-800 p-6 rounded-lg">
+        <span class="text-white font-bold text-lg">
+            Editar Noticia
+        </span>   
+        <form>
+            <div class="grid grid-cols-2 gap-3">            
+                <div class="flex flex-col md:pt-4">
+                    <span class="text-white font-bold mb-2"> Titulo </span>
+                    <input name="titulo" type="text" placeholder="" class="placeholder-gray-600 md:p-2 rounded-lg" [(ngModel)]="selectedNew.titulo" ngModel>
+                </div>
+                <div class="flex flex-col md:pt-4">
+                    <span class="text-white font-bold mb-2"> Subtitulo </span>
+                    <input name="subtittle" type="text" placeholder="Nombre Completo" class="placeholder-gray-600 md:p-2 rounded-lg" [(ngModel)]="selectedNew.subtittle" ngModel>
+                </div>                
+                <div class="flex flex-col md:pt-4">
+                    <span class="text-white font-bold mb-2"> URL de la Imagen </span>
+                    <input name="image" type="text" placeholder="Apellidos" class="placeholder-gray-600 md:p-2 rounded-lg" [(ngModel)]="selectedNew.image" ngModel>
+                </div>    
+                <div class="flex flex-col">
+                    <span class="text-white font-bold mb-2"> Texto 1 </span>
+                    <textarea name="content1" type="email" placeholder="Nombre Completo" class="placeholder-gray-600 md:p-2 rounded-lg" [(ngModel)]="selectedNew.content1" ngModel rows="10"></textarea>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-bold mb-2"> Texto 2 </span>
+                    <textarea name="content2" type="text" placeholder="Apellidos" class="placeholder-gray-600 md:p-2 rounded-lg" [(ngModel)]="selectedNew.content2" ngModel rows="10"></textarea>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-bold mb-2"> Texto 3 </span>
+                    <textarea name="content3" type="text" placeholder="Apellidos" class="placeholder-gray-600 md:p-2 rounded-lg" [(ngModel)]="selectedNew.content3" ngModel rows="10"></textarea>
+                </div>
+                <div>
+
+                </div>
+                <div class="flex justify-end">
+                    <button class="w-40 h- bg-red-600 hover:bg-red-800 text-white p-2 rounded-lg duration-200 font-bold" (click)="cancelEdit()">
+                        Cancelar
+                    </button>
+                    <button class="w-40 hover:bg-[#003A70] text-white p-2 rounded-lg duration-200 font-bold" (click)="saveChanges()">
+                        Guardar Cambios
+                    </button>
+                </div>                
+            </div>
+        </form>             
+    </div>
+</div>
+
+<div class="md:p-4">    
+    <div *ngIf="dataSource" class="sm:ml-64 relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        ID:
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Titulo
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Accion  
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let news of dataSource" class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ news._id }}
+                    </th>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ news.titulo }}
+                    </td>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        
+                    </td>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        
+                    </td>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex gap-3" (click)="editNews(news)">
+                        <button class="hover:bg-[#003A70] p-2 duration-200 rounded-lg">
+                            Editar
+                        </button>
+                        <button class="hover:bg-red-600 p-2 duration-200 rounded-lg" (click)="deleteNew(news._id)">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>                               
+            </tbody>            
+        </table>
+    </div>    
+</div>
+  

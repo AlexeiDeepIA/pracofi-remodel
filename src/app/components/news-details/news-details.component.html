@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div class="w-full">
+    <div class="relative">
+        <img src="{{ noticia.image }}" alt="" class="md:w-full object-cover md:min-h-[100vh]">
+        <div class="flex items-center px-12 bg-gradient-to-r from-black to-transparent absolute inset-0 overflow-hidden">
+            <div class="">
+                <h1 class="text-2xl mb-4 md:text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl"> {{ noticia.titulo }} </h1> 
+            </div>
+        </div>
+    </div>    
+    <div class="p-12 bg-slate-200 w-full">
+        <h2 class="font-bold md:text-4xl text-2xl"> {{ noticia.titulo }} </h2>
+        <div class="pt-6">
+            <p class="text-justify text-xl">
+                {{ noticia.subtittle }}
+            </p>
+        </div>
+        <div class="pt-6">
+            <p class="text-justify text-xl">
+                {{ noticia.content1 }}
+            </p>
+        </div>
+        <div class="pt-6">
+            <p class="text-justify text-xl">
+                {{ noticia.content2 }}
+            </p>
+        </div>
+        <div class="pt-12">
+            <p class="md:text-justify text-sm font-bold text-[#003A70]">
+                {{ noticia.content3 }}
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="w-full h-full pt-6 bg-slate-200 border-t-2 border-gray-700">
+    <div class="px-12 pb-6 pt-6">
+        <div class="flex justify-center">
+            <span class="text-black font-bold text-4xl"> Otras Noticias </span>
+        </div>
+    </div>
+    <div class="md:grid md:grid-cols-4 gap-4 p-4">
+        <div *ngFor="let news of dataSource" class="bg-white md:max-w-[25vw] md:max-h-[80vh] rounded-lg overflow-hidden md:mb-0 mb-4">
+            <img src="{{ news.image }}" alt="" class="rounded-t-lg w-full md:min-h[33vh] md:max-h-[33vh]">
+            <div class="p-4 flex flex-col p-4">
+                <span class="text-xl font-bold"> {{ news.titulo }} </span>
+                    <div class="py-4 w-full max-h-[20vh] md:min-h-[20vh] md:max-h-[20vh] overflow-hidden-with-shadow">  
+                        <p class="text-justify">
+                            {{ news.content1 }}
+                        </p>
+                    </div>                
+            </div>
+        </div>  
+    </div>
+    <div class="flex justify-end p-6">
+        <button class="flex gap-2 bg-[#003A70] rounded-lg p-2 text-white font-bold" [routerLink]="['/news']">
+            Ver más    
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>                      
+        </button>
+    </div>
+</div>
+<app-footer></app-footer>

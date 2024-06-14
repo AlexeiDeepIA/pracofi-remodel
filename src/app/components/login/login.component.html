@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="w-full h-[80vh] bg-[#003A70] flex justify-center items-center">      
+    <div class="bg-gray-900 rounded-lg min-w-[33vw]">
+        <div class="flex justify-center mt-4">
+            <img src="../../../assets/images/pracofi.png" alt="" class="max-w-96">
+        </div>
+        <div class="p-8">
+            <div class="flex justify-center p-2 pb-12">
+                <span class="text-white font-bold text-2xl"> Ingresa tus credenciales </span>
+            </div>            
+            <form #loginForm="ngForm" (submit)="signIn(loginForm)">
+                <div class="">                
+                    <div class="pb-2">
+                        <span class="text-lg md:mb-4 text-white font-bold"> Usuario </span>
+                    </div>
+                    <input name="email" type="text" placeholder="Usuario" class=" placeholder-gray-600 bg-slate-100/80 focus:bg-slate-200 duration-200 text-black mb-5 rounded-lg border-b-2 outline-0 border-[#003A70] w-full py-2 px-2" ngModel>
+                </div>
+                <div>
+                    <div class="pt-2 pb-4">
+                        <span class="font-bold text-white text-lg"> Contraseña </span>
+                    </div>
+                    <input name="password" type="password" placeholder="Contraseña" class=" placeholder-gray-600 bg-slate-200/80 focus:bg-slate-200 duration-200 text-black mb-5 rounded-lg border-b-2 outline-0 border-[#003A70] w-full py-2 px-2" ngModel>
+                </div>
+                <button type="submit" class="w-full text-white p-2 rounded-lg font-bold hover:bg-[#003A70] duration-200">
+                    Iniciar Sesión
+                </button>
+            </form>
+        </div>        
+    </div>    
+</div>
+<app-footer></app-footer>
